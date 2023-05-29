@@ -30,39 +30,7 @@ function drawClock() {
   drawTime(ctx, radius);
 }
 
-function drawFace(ctx, radius) {
-  var grad;
-    
- // 사각형 테두리 그리기
-  var rectWidth = radius * 2.2;
-  var rectHeight = radius * 2.2;
-  ctx.strokeStyle = 'black'; // 테두리 색상
-  ctx.lineWidth = 1; // 테두리 두께
-  ctx.strokeRect(-rectWidth / 2, -rectHeight / 2, rectWidth, rectHeight);
 
-  ctx.beginPath();
-  ctx.arc(0, 0, radius, 0, 2 * Math.PI);
-  ctx.fillStyle = 'white';
-  ctx.fill();
-
-  grad = ctx.createRadialGradient(0, 0 ,radius * 0.9, 0, 0, radius * 1.0);
-  grad.addColorStop(0, '#333');
-  grad.addColorStop(0.5, 'black');
-  grad.addColorStop(0, '#333');
-  ctx.strokeStyle = grad;
-  ctx.lineWidth = radius*0.1;
-  ctx.stroke();
- 
-// 테두리 설정
-  //ctx.strokeStyle = 'red'; // 테두리 색상
-  //ctx.lineWidth = radius*0.05; // 테두리 두께
-  //ctx.stroke();
-
-  ctx.beginPath();
-  ctx.arc(0, 0, radius * 0.02, 0, 2* Math.PI);
-  ctx.fillStyle = '#333';
-  ctx.fill();
-}
 function drawNumbers(ctx, radius) {
   var ang;
   var num;
@@ -74,6 +42,8 @@ function drawNumbers(ctx, radius) {
     ctx.rotate(ang);
     ctx.translate(0, -radius * 0.83);
     ctx.rotate(-ang);
+    // 숫자의 색상을 지정
+    ctx.fillStyle = 'black';
     ctx.fillText(num.toString(), 0, 0);
     ctx.rotate(ang);
     ctx.translate(0, radius * 0.83);
@@ -106,6 +76,39 @@ function drawHand(ctx, pos, length, width) {
   ctx.lineTo(0, -length);
   ctx.stroke();
   ctx.rotate(-pos);
+}
+function drawFace(ctx, radius) {
+  var grad;
+    
+ // 사각형 테두리 그리기
+  var rectWidth = radius * 2.2;
+  var rectHeight = radius * 2.2;
+  ctx.strokeStyle = 'black'; // 테두리 색상
+  ctx.lineWidth = 1; // 테두리 두께
+  ctx.strokeRect(-rectWidth / 2, -rectHeight / 2, rectWidth, rectHeight);
+
+  ctx.beginPath();
+  ctx.arc(0, 0, radius, 0, 2 * Math.PI);
+  ctx.fillStyle = 'white';
+  ctx.fill();
+
+  grad = ctx.createRadialGradient(0, 0 ,radius * 0.9, 0, 0, radius * 1.0);
+  grad.addColorStop(0, '#333');
+  grad.addColorStop(0.5, 'black');
+  grad.addColorStop(0, '#333');
+  ctx.strokeStyle = grad;
+  ctx.lineWidth = radius*0.1;
+  ctx.stroke();
+ 
+// 테두리 설정
+  //ctx.strokeStyle = 'red'; // 테두리 색상
+  //ctx.lineWidth = radius*0.05; // 테두리 두께
+  //ctx.stroke();
+
+  ctx.beginPath();
+  ctx.arc(0, 0, radius * 0.02, 0, 2* Math.PI);
+  ctx.fillStyle = 'silver';
+  ctx.fill();
 }
 
 </script>
